@@ -1,0 +1,4 @@
+name: KTTemplate
+version: '${version}'
+main: moe.quill.mc.kttemplate.KtTemplate
+api-version: 1.18
