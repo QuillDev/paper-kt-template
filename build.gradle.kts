@@ -8,19 +8,17 @@ java.sourceCompatibility = JavaVersion.VERSION_17
 plugins {
     id("java-library")
     id("maven-publish")
-    id("com.github.johnrengelman.shadow") version "7.1.2"
+    id("com.github.johnrengelman.shadow") version "8.1.1"
     kotlin("jvm") version "1.7.0-Beta"
 }
 
 repositories {
-    mavenLocal()
-    maven {
-        url = uri("https://papermc.io/repo/repository/maven-public/")
-        url = uri("https://hub.spigotmc.org/nexus/content/repositories/snapshots/")
-        url = uri("https://repo.maven.apache.org/maven2/")
-        url = uri("https://jitpack.io")
-    }
+    maven { url = uri("https://repo.papermc.io/repository/maven-public/") }
+
     mavenCentral()
+    mavenLocal()
+
+    gradlePluginPortal()
 }
 
 
@@ -41,7 +39,7 @@ tasks {
         archiveClassifier.set("")
         archiveFileName.set("${rootProject.name}-${project.version}.jar")
     }
-    build{
+    build {
         dependsOn(shadowJar)
     }
 }
