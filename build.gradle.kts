@@ -9,7 +9,7 @@ plugins {
     id("java-library")
     id("maven-publish")
     id("com.github.johnrengelman.shadow") version "8.1.1"
-    kotlin("jvm") version "1.7.0-Beta"
+    kotlin("jvm") version "1.8.20"
 }
 
 repositories {
