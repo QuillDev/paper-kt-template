@@ -1,3 +1,4 @@
+import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 group = "moe.quill.mc"
@@ -32,22 +33,22 @@ tasks {
         options.encoding = Charsets.UTF_8.name()
         options.release.set(17)
     }
-    jar {
+
+    withType<Jar> {
         archiveClassifier.set("noshade")
+
     }
-    shadowJar {
+
+    withType<ShadowJar> {
         archiveClassifier.set("")
         archiveFileName.set("${rootProject.name}-${project.version}.jar")
-    }
-    build {
-        dependsOn(shadowJar)
     }
 }
 val compileKotlin: KotlinCompile by tasks
 compileKotlin.kotlinOptions {
-    jvmTarget = "1.8"
+    jvmTarget = "17"
 }
 val compileTestKotlin: KotlinCompile by tasks
 compileTestKotlin.kotlinOptions {
-    jvmTarget = "1.8"
+    jvmTarget = "17"
 }
