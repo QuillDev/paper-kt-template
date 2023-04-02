@@ -36,12 +36,15 @@ tasks {
 
     withType<Jar> {
         archiveClassifier.set("noshade")
-
     }
 
     withType<ShadowJar> {
         archiveClassifier.set("")
         archiveFileName.set("${rootProject.name}-${project.version}.jar")
+    }
+
+    build {
+        dependsOn(shadowJar)
     }
 }
 val compileKotlin: KotlinCompile by tasks
